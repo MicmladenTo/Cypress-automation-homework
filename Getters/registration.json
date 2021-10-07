@@ -1,0 +1,13 @@
+{
+	"email" : "input[type='email']",
+	"password" : "input[type='password']",
+	"revealPassword" : "button[type='button', class='vs-c-btn--icon']",
+	"numberOfUsers" : "input[name='number_of_users']",
+	"checkbox" : "span[class='vs-c-checkbox-check']",
+	"submit" : "button[type='submit']",
+	"googleLogin" : "button[class='vs-c-btn--gp']",
+	"facebookLogin" : "button[class='vs-c-btn--fb']",
+	"twitterLogin" : "button[class='vs-c-btn--tw']",
+	"regzenLogin" : "button[class='vs-c-btn--regzen']",
+	"goToLogin" : "a[href='/login']"
+}

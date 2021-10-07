@@ -1,0 +1,19 @@
+{
+	"homeButton" : ".vs-c-site-logo .vs-c-site-sign",
+	"linkToOrganisation" : ".vs-l-project__title-info .vs-u-cursor--pointer",
+	"markBoardAsFavourite" : ".vs-u-cursor--pointer .vs-u-gap--right .vs-u-display--flex",
+	"showSearch" : "button[class='vs-c-btn vs-c-btn--link el-tooltip']",
+	"searchInput" : "input[type='text']",
+	"addNewItem" : ".vs-c-sprint-info > .vs-c-dropdown-wrapper > .vs-c-btn.vs-c-btn--link.el-tooltip",
+	"itemDetailsInput" : "textarea[name='item_name']",
+	"cancelNewItem" : "button[name='new_item_cancel']",
+	"saveNewItem" : "button[name='new_item_save']",
+	"showFinishedSprints" : "button[name='show_finished_sprints']",
+	"hideFinishedSprints" : "button[name='show_finished_sprints' class='vs-u-active']",
+	"showCardsView" : ".vs-c-sprint-info #cards-view",
+	"showTableView" : "button[name='show_finished_sprints'] + button",
+	"moreOptions" : ".vs-c-sprint-info > .el-dropdown button",
+	"showFilters" : "button[name='show_finished_sprints'] ~ div",
+	"showNotifications" : "vs-c-notification > div.el-badge > button",
+	"howItWorks" : ".vs-l-project__options > button"
+}
