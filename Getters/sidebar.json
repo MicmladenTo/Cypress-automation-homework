@@ -1,0 +1,24 @@
+{
+	"collapseSidebar" : ".vs-c-list__item",
+	
+	"addNewTop" : {
+		"addOrganization" : ".vs-c-list > :nth-child(1) > a",
+        "addBoard": ":nth-child(2) > a",
+        "importBoard":".vs-c-list > :nth-child(3) > a"
+	},
+
+	"addNewBottom" : ".vs-c-tooltip-active-sprints .vs-c-list li a",
+
+	"seeLessInfo" : ".vs-c-list__oragnisation-item > button",
+
+	"organisationMenu" : {
+		"boards" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(1) > a",
+		"projects" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(2) > a",
+		"invoicing" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(3) > a",
+		"clients" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(4) > a",
+		"worklogs" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(5) > a",
+		"teamManagement" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(6) > a",
+		"reports" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(7) > a",
+		"configuration" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(8) > a"
+	}
+}
