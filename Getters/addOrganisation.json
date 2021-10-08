@@ -1,13 +1,16 @@
 {
 	"addNewOrganisation" : ".s-c-my-organization .vs-c-my-organization--add-new",
 	"addOrgFromSidebar" : ".vs-c-list > div:nth-child(1) > a",
+
 	"seeLessInfo" : ".vs-c-list__oragnisation-item > button",
+
 	"navigate" : {
 		"organisationName" : "input[name='name']",
 		"previousButton" : "button[name='prev_btn']",
 		"nextButton" : "button[name='prev_btn']",
 		"closeModal" : "button[name='close-new-board-modal-btn']"
 },
+
 	"logoSetup" : {
 		"logoUpload" : "input[class='el-upload__input']",
 		"closeLogoModal" : "button[name='close-confirmation-modal-btn']",
@@ -15,4 +18,5 @@
 		"cancelLogo" : "button[name='cancel-btn']",
 		"saveLogo" : "button[name='save-btn']"
 	}
+
 }
