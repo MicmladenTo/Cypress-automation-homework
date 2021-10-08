@@ -1,20 +1,16 @@
 {
 	"acceptCookies" : "a[id='cookieGotIt']",
-	"monthlySwitch" : "div[class='vsp-c-switch-pricing-plan-option'] > p:contains('Monthly')",
-	"annuallySwitch" : "div[class='vsp-c-switch-pricing-plan-option'] > p:contains('Annually')",
-
+	"monthlySwitch" : "div[class='vsp-c-switch-pricing-plan-option'] > p:first-of-type",
+	"annuallySwitch" : "div[class='vsp-c-switch-pricing-plan-option'] > p:nth-of-type(2)",
 	"monthlyPackages" : {
 		"starterSignup" : "a[onclick='goToSignUpCard(\"starter\", \"monthly\")']", 
 		"standardSignup" : "a[onclick='goToSignUpCard(\"standard\", \"monthly\")']",
 		"growthSignup" : "a[onclick='goToSignUpCard(\"growth\", \"monthly\")']"
 	},
-
 	"annualPackages" : {
 		"starterSignup" : "a[onclick='goToSignUpCard(\"starter\", \"yearly\")']",
 		"standardSignup" : "a[onclick='goToSignUpCard(\"standard\", \"yearly\")']",
 		"growthSignup" : "a[onclick='goToSignUpCard(\"growth\", \"yearly\")']"
 	},
-
 	"enterpriseSignup" : "a[id='getAQuote']" 
-
 }
