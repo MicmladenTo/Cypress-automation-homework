@@ -1,0 +1,25 @@
+{
+  "name": "cypress-automation-homework",
+  "version": "1.0.0",
+  "description": "Cypress project homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MicmladenTo/Cypress-automation-homework.git"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "Mladen Tomic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MicmladenTo/Cypress-automation-homework/issues"
+  },
+  "homepage": "https://github.com/MicmladenTo/Cypress-automation-homework#readme",
+  "dependencies": {
+    "cypress": "^8.5.0"
+  }
+}
