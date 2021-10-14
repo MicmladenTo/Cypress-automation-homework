@@ -1,6 +1,7 @@
 {
 	"collapseSidebar" : ".vs-c-list__item",
 	"addNewTop" : {
+		"addNew" : ".vb-content > div.vs-c-list > .vs-c-list__item > .vs-c-list__btn",
 		"addOrganization" : ".vs-c-list > :nth-child(1) > a",
         "addBoard": ":nth-child(2) > a",
         "importBoard":".vs-c-list > :nth-child(3) > a"
@@ -15,6 +16,9 @@
 		"worklogs" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(5) > a",
 		"teamManagement" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(6) > a",
 		"reports" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(7) > a",
-		"configuration" : ".vs-l-project__menu ul .vs-c-list > ul li:nth-child(8) > a"
-	}
+		"configuration" : ":nth-child(8) > span > div > .vs-c-site-logo"
+	},
+	"goToOrganisation" : "a.active.vs-c-list__organisation",
+	"account" : "a[href='/account']",
+	"profileSettings" : "a[href='/account/settings']"
 }

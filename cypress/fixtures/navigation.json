@@ -1,6 +1,6 @@
 {
-	"homeButton" : ".vs-c-site-logo .vs-c-site-sign",
-	"linkToOrganisation" : ".vs-l-project__title-info .vs-u-cursor--pointer",
+	"homeButton" : ".vs-l-project__header > .vs-c-site-logo",
+	"linkToOrganisation" : ".vs-l-organization__title",
 	"markBoardAsFavourite" : ".vs-u-cursor--pointer .vs-u-gap--right .vs-u-display--flex",
 	"showSearch" : "button[class='vs-c-btn vs-c-btn--link el-tooltip']",
 	"searchInput" : "input[type='text']",
@@ -15,5 +15,6 @@
 	"moreOptions" : ".vs-c-sprint-info > .el-dropdown button",
 	"showFilters" : "button[name='show_finished_sprints'] ~ div",
 	"showNotifications" : "vs-c-notification > div.el-badge > button",
-	"howItWorks" : ".vs-l-project__options > button"
+	"howItWorks" : ".vs-l-project__options > button",
+	"logoutButton"  : ".vs-c-logout > button"
 }

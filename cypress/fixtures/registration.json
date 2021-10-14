@@ -9,5 +9,14 @@
 	"facebookLogin" : "button[class='vs-c-btn--fb']",
 	"twitterLogin" : "button[class='vs-c-btn--tw']",
 	"regzenLogin" : "button[class='vs-c-btn--regzen']",
-	"goToLogin" : "a[href='/login']"
+	"goToLogin" : "a[href='/login']",
+
+	"accountDetailsModal" : {
+		"firstName" : "input[name='first_name']",
+		"lastName" : "input[name='last_name']",
+		"companyName" : "input[name='company_name']",
+		"organisationName" : "input[name='organization_name']",
+		"submitButton" : "button[type='submit']",
+		"cancelButton" : "form + button"
+	}
 }

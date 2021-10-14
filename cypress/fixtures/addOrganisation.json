@@ -1,0 +1,39 @@
+{
+	"addNewOrganisation" : ".vs-c-my-organization--add-new",
+	"organisationNameHeader" : ".vs-c-my-organization__title",
+	"editOrganisation" : "input[name='change-organization-name']",
+	"confirmOrgNameChange" : "button[name='change-organization-name']",
+	"addOrgFromSidebar" : ".vs-c-list > div:nth-child(1) > a",
+	"toOrganisationConfig" : ".vs-c-my-organization.organization-list-item",
+	"organisationConfig" : {
+		"organisationNameInput" : "input[name='name']",
+		"updateOrgNameButton" : ".el-form button[type='submit']",
+		"deleteOrgButton" : ".vs-c-btn.vs-c-btn--warning.vs-c-btn--spaced",
+		"confirmationModal" : {
+			"closeModal" : "button[name='close-confirmation-modal-btn']",
+			"paswordInput" : "input[type='password']",
+			"noButton" : "button[name='cancel-btn']",
+			"yesButton" : "button[name='save-btn']"
+		}
+	},
+	"archiveOrg" : ".vs-l-my-organizations__content .vs-c-my-organizations-item-wrapper .vs-c-icon--archive",
+	"deleteArchivedOrg" : ".vs-c-icon--remove",
+	"goToArchivedOrgs" : ".vs-c-my-organizations-item-wrapper--archived > div",
+	"seeLessInfo" : ".vs-c-list__oragnisation-item > button",
+	"boardsModal" : "button[class='vs-c-btn vs-c-btn--primary vs-c-btn--lg vs-u-font-sm vs-c-modal--features-confirm-button']",
+	"navigate" : {
+		"organisationName" : "input[name='name']",
+		"previousButton" : "button[name='prev_btn']",
+		"nextButton" : "button[name='next_btn']",
+		"closeModal" : "button[name='close-new-board-modal-btn']"
+},
+	"logoSetup" : {
+		"logoUpload" : "input[class='el-upload__input']",
+		"closeLogoModal" : "button[name='close-confirmation-modal-btn']",
+		"deleteLogo" : "button[name='delete-btn']",
+		"cancelLogo" : "button[name='cancel-btn']",
+		"saveLogo" : "button[name='save-btn']"
+	},
+	"deleteOrgFromPanel" : ".vs-c-btn--warning",
+	"reopenOrgFromPanel" : ".vs-c-btn--warning"
+}

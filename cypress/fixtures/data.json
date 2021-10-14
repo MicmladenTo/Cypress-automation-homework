@@ -1,0 +1,48 @@
+{
+	"user" : {
+		"email" : "mlart8419@yahoo.com",
+		"password" : "Vivify8"
+	},
+
+	"invalidEmail" : {
+		"noAtSymbol" : "mladen.tomicvivifyideas.com",
+		"noDomain" : "mladen.tomic",
+		"noUsername" : "@vivify.com",
+		"noTopLevel" : "mladen.tomic@vivifyideas",
+		"invalidSecondLevel" : "mladen.tomic@?.#",
+		"blankSpace" : "mladen tomic @ vivifyideas.com",
+		"specialChar" : "#?&()..=@vivifyideas.com"
+	},
+
+	"invalidPassword" : {
+		"invalidChars" : "?!@àč#??#?",
+		"tooShort" : "1234"
+	},
+
+	"accountDetails" : {
+		"firstName" : "Mladen",
+		"lastName" : "Tomic",
+		"companyName" : "Dara QA All Stars",
+		"organisationName" : "Test org",
+		"editedOrgName" : "Edited organisation name",
+		"tooLongOrgName" : "Ogromno ime organizacije za potrebe testiranja, koje ću ponoviti nekoliko puta. Ogromno ime organizacije za potrebe testiranja, koje ću ponoviti nekoliko puta. Ogromno ime organizacije za potrebe testiranja, koje ću ponoviti nekoliko puta. Ogromno ime organizacije za potrebe testiranja, koje ću ponoviti nekoliko puta.",
+		"orgNameOnlySpaces" : "   ",
+		"unicodeName" : "чьяёъшжюэщћђљџцšđžćč"
+	},
+
+	"wrongUser" : {
+		"wrongEmail" : "mladen.petrovic@vivifyideas.com",
+		"wrongPassword" : "vivify8"
+	},
+
+	"invalidUser" : {
+		"invalidUser" : "mladen.tomicvivifyideas.com",
+		"invalidPassword" : "8"
+	},
+	"numberOfUsers" : {
+		"validNumber" : "5",
+		"tooFew" : "0",
+		"tooMany" : "11"
+	},
+	"boardTitle" : "QA testing board"
+}
