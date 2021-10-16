@@ -1,0 +1,37 @@
+{
+	"addBoardFromPanel" : ".vs-c-organization-boards__item--add-new",
+	"importBoardFromTop" : ".vs-c-organization__header a",
+	"addBoardFromTop" : ".vs-c-organization__header button",
+	"addBoardFromSidebar" : ".vs-c-list > div:nth-child(2) > a",
+	"importBoardFromSidebar" : ".vs-c-list > div:last-child > a",
+	"goToLastAddedBoard" : ".vs-c-organization-boards__item:last-of-type",
+	"archiveLastAddedBoard" : ".vs-c-organization-boards__item:last-of-type .vs-c-boards-item__actions > div",
+	"addTeamMember" : ".vs-c-organization-boards__item:last-of-type .vs-c-boards-item__actions > span",
+	"newBoard" : {
+		"closeBoardModal" : "button[name='close-new-board-modal-btn']",
+		"boardTitle" : "input[name='name']",
+		"boardType" : {
+			"scrum" : "span[name='type_scrum']",
+			"kanban" : "span[name='type_kanban']"
+		},
+		"logoSetup" : {
+			"logoUpload" : "input[class='el-upload__input']",
+			"closeLogoModal" : "button[name='close-confirmation-modal-btn']",
+			"deleteLogo" : "button[name='delete-btn']",
+			"cancelLogo" : "button[name='cancel-btn']",
+			"saveLogo" : "button[name='save-btn']"
+		},
+		"navigate":{
+			"previousButton" : "button[name='prev_btn']",
+			"nextButton" : "button[name='next_btn']",
+			"closeModal" : "button[name='close-new-board-modal-btn']"
+		}
+	},
+	"archiveBoard" : ".vs-c-organization__section:first-of-type .vs-c-boards-item__actions div:first-child",
+	"deleteArchivedBoard" : ".vs-c-organization-boards__item--archived .vs-c-boards-item__actions div:first-child",
+	"modal" : {
+		"close" : "button[name='close-confirmation-modal-btn']",
+		"noButton" : "button[name='cancel-btn']",
+		"yesButton" : "button[name='save-btn']"
+	}
+}

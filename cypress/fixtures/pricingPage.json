@@ -1,0 +1,16 @@
+{
+	"acceptCookies" : "a[id='cookieGotIt']",
+	"monthlySwitch" : ".vsp-c-switch-pricing-plan-list > :nth-child(1)",
+	"annuallySwitch" : ".vsp-c-switch-pricing-plan-list > :nth-of-type(2)",
+	"monthlyPackages" : {
+		"starterSignup" : ".vsp-c-pricing-plan-list--monthly > :nth-child(1) > .vsp-c-btn", 
+		"standardSignup" : ".vsp-c-pricing-plan-list--monthly > :nth-child(2) > .vsp-c-btn",
+		"growthSignup" : ".vsp-c-pricing-plan-list--monthly > :nth-child(3) > .vsp-c-btn"
+	},
+	"annualPackages" : {
+		"starterSignup" : ".vsp-c-pricing-plan-list--annual > :nth-child(1) > .vsp-c-btn",
+		"standardSignup" : ".vsp-c-pricing-plan-list--annual > :nth-child(2) > .vsp-c-btn",
+		"growthSignup" : ".vsp-c-pricing-plan-list--annual > :nth-child(3) > .vsp-c-btn"
+	},
+	"enterpriseSignup" : "a[id='getAQuote']" 
+}
