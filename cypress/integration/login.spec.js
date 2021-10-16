@@ -1,7 +1,7 @@
-const loginPage = require('../fixtures/loginModule.json')
-const data = require('../fixtures/data.json');
-const sidebar = require('../fixtures/sidebar.json');
-const navigation = require('../fixtures/navigation.json');
+import loginPage from '../fixtures/loginModule.json';
+import data from '../fixtures/data.json';
+import sidebar from '../fixtures/sidebar.json';
+import navigation from '../fixtures/navigation.json';
 // import login from '../fixtures/loginModule.json'
 
 describe('first cypress block', () => {
@@ -58,10 +58,4 @@ describe('first cypress block', () => {
 	});
 
 
-  })
-
-  Cypress.on('uncaught:exception', (err, runnable) => {
-    // returning false here prevents Cypress from
-    // failing the test
-    return false
   })

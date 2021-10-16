@@ -1,9 +1,9 @@
-const loginPage = require('../fixtures/loginModule.json');
-const registration = require('../fixtures/registration.json');
-const pricingPage = require('../fixtures/pricingPage.json');
-const data = require('../fixtures/data.json');
-const sidebar = require('../fixtures/sidebar.json');
-const navigation = require('../fixtures/navigation.json');
+import loginPage from '../fixtures/loginModule.json';
+import registration from '../fixtures/registration.json';
+import pricingPage from '../fixtures/pricingPage.json';
+import data from '../fixtures/data.json';
+import sidebar from '../fixtures/sidebar.json';
+import navigation from '../fixtures/navigation.json';
 // isto sto i:
 // import login from '../fixtures/loginModule.json'
 
@@ -135,9 +135,3 @@ describe('Registration suite', () => {
 		cy.wait(2000);
 	});
   })
-  Cypress.on('uncaught:exception', (err, runnable) => {
-    // returning false here prevents Cypress from
-    // failing the test
-    return false
-  })
-  

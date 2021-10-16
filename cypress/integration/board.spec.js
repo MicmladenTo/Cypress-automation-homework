@@ -1,9 +1,9 @@
-const loginPage = require('../fixtures/loginModule.json');
-const addOrganisation = require('../fixtures/addOrganisation.json');
-const addBoard = require('../fixtures/addBoard.json');
-const data = require('../fixtures/data.json');
-const sidebar = require('../fixtures/sidebar.json');
-const navigation = require('../fixtures/navigation.json');
+import loginPage from '../fixtures/loginModule.json';
+import addOrganisation from '../fixtures/addOrganisation.json';
+import addBoard from '../fixtures/addBoard.json';
+import data from '../fixtures/data.json';
+import sidebar from '../fixtures/sidebar.json';
+import navigation from '../fixtures/navigation.json';
 
 describe('Organisation CRUD suite', () => {
 
@@ -76,11 +76,3 @@ describe('Organisation CRUD suite', () => {
 	});
 
 })
-
-
-Cypress.on('uncaught:exception', (err, runnable) => {
-    // returning false here prevents Cypress from
-    // failing the test
-    return false
-  })
-  
