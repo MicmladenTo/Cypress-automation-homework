@@ -8,5 +8,7 @@
 	"facebookLogin" : "button[class='vs-c-btn--fb']",
 	"twitterLogin" : "button[class='vs-c-btn--tw']",
 	"regzenLogin" : "button[class='vs-c-btn--regzen']",
-	"linktoSignup" : "a[href='https://cypress-api.vivifyscrum-stage.com/pricing']"
+	"linktoSignup" : "a[href='https://cypress-api.vivifyscrum-stage.com/pricing']",
+	"errorFields" : ".el-form-item__error",
+	"loginError" : ".vs-c-custom-errors > .el-form-item__error"
 }

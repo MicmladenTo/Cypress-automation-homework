@@ -1,6 +1,6 @@
 {
 	"user" : {
-		"email" : "mlart8419@yahoo.com",
+		"email" : "mlart8436@yahoo.com",
 		"password" : "Vivify8"
 	},
 
@@ -23,8 +23,10 @@
 		"firstName" : "Mladen",
 		"lastName" : "Tomic",
 		"companyName" : "Dara QA All Stars",
-		"organisationName" : "Test org",
-		"editedOrgName" : "Edited organisation name",
+		"organisationName" : "Dashboard org",
+		"organisationName2" : "Sidebar organisation",
+		"organisationName3" : "Third organisation",
+		"editedOrgName" : "Edited org name",
 		"tooLongOrgName" : "Ogromno ime organizacije za potrebe testiranja, koje ću ponoviti nekoliko puta. Ogromno ime organizacije za potrebe testiranja, koje ću ponoviti nekoliko puta. Ogromno ime organizacije za potrebe testiranja, koje ću ponoviti nekoliko puta. Ogromno ime organizacije za potrebe testiranja, koje ću ponoviti nekoliko puta.",
 		"orgNameOnlySpaces" : "   ",
 		"unicodeName" : "чьяёъшжюэщћђљџцšđžćč"

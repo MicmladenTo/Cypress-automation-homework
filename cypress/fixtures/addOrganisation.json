@@ -5,10 +5,12 @@
 	"confirmOrgNameChange" : "button[name='change-organization-name']",
 	"addOrgFromSidebar" : ".vs-c-list > div:nth-child(1) > a",
 	"toOrganisationConfig" : ".vs-c-my-organization.organization-list-item",
+	"notificationModal" : ".el-message__group",
 	"organisationConfig" : {
 		"organisationNameInput" : "input[name='name']",
 		"updateOrgNameButton" : ".el-form button[type='submit']",
 		"deleteOrgButton" : ".vs-c-btn.vs-c-btn--warning.vs-c-btn--spaced",
+		"modalPopup" : ".vs-c-confirmation-modal",
 		"confirmationModal" : {
 			"closeModal" : "button[name='close-confirmation-modal-btn']",
 			"paswordInput" : "input[type='password']",
