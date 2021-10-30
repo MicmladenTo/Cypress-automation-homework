@@ -89,7 +89,7 @@ describe('A suite of login tests', () => {
 		cy.get(loginPage.errorFields).eq(1).should('contain', 'The password field must be at least 5 characters');
 	});
 
-	it.only('Valid login, then logout', () => {
+	it('Valid login, then logout', () => {
 		// Intercept the login, logout and my-organization routes
 		cy.intercept('POST', '/api/v2/login').as('login');
 		cy.intercept('POST', '/api/v2/logout').as('logout');

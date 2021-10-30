@@ -7,7 +7,7 @@ import navigation from '../fixtures/navigation.json';
 
 describe('Organisation CRUD suite', () => {
 
-	it.only('Go to the app and log in', () => {
+	it('Go to the app and log in', () => {
 		// Intercept the login, logout and my-organization routes
 		cy.intercept('POST', '/api/v2/login').as('login');
 		cy.intercept('GET', '/api/v2/my-organizations').as('myOrganizations');

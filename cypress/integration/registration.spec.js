@@ -9,7 +9,7 @@ import navigation from '../fixtures/navigation.json';
 
 describe('Registration suite', () => { 
 
-	it.only('Go to registration page', () => {
+	it('Go to registration page', () => {
 		cy.intercept('/api/v2/health-check').as('loginRedirect');
 		cy.visit('/', {timeout: 30000});
 		// Make sure we have been properly redirected on visiting the homepage
@@ -23,7 +23,7 @@ describe('Registration suite', () => {
 		cy.url().should('eq', 'https://cypress-api.vivifyscrum-stage.com/pricing')
 	});
 
-	it.only('Sign up for a starter account', () => {
+	it('Sign up for a starter account', () => {
 		cy.intercept('/api/v2/pricing-plans/1').as('registrationForm');
 
 		cy.get(pricingPage.monthlySwitch).click({force:true});
@@ -153,7 +153,7 @@ describe('Registration suite', () => {
 		cy.get(registration.errorFields).eq(2).should('contain', 'The number of users must be between 1 and 10');
 	});
 
-	it.only('Register successfully', () => {
+	it('Register successfully', () => {
 		cy.intercept('POST', '/api/v2/register').as('register');
 		cy.intercept('GET', '/api/v2/my-organizations').as('myOrganizations');
 		cy.get(registration.email).clear().type(data.user.email);
@@ -179,7 +179,7 @@ describe('Registration suite', () => {
 		cy.url().should('eq', 'https://cypress.vivifyscrum-stage.com/my-organizations');
 	});
 
-	it.only('Add account details and log out', () => {
+	it('Add account details and log out', () => {
 		cy.intercept('POST', '/api/v2/logout').as('logout');
 
 		// Go to Account section and assert that we are at the expected page
