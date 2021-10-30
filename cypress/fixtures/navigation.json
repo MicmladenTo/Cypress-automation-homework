@@ -1,5 +1,6 @@
 {
 	"homeButton" : ".vs-l-project__header > .vs-c-site-logo",
+	"myOrganisations" : ".vs-l-sprint__name",
 	"linkToOrganisation" : ".vs-l-organization__title",
 	"markBoardAsFavourite" : ".vs-u-cursor--pointer .vs-u-gap--right .vs-u-display--flex",
 	"showSearch" : "button[class='vs-c-btn vs-c-btn--link el-tooltip']",

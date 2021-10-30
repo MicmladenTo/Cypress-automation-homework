@@ -5,6 +5,7 @@
 	"numberOfUsers" : "input[name='number_of_users']",
 	"checkbox" : "span[class='vs-c-checkbox-check']",
 	"submit" : "button[type='submit']",
+	"errorFields" : ".el-form-item__error",
 	"googleLogin" : "button[class='vs-c-btn--gp']",
 	"facebookLogin" : "button[class='vs-c-btn--fb']",
 	"twitterLogin" : "button[class='vs-c-btn--tw']",
