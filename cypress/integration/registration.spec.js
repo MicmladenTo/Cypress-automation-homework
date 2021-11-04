@@ -4,10 +4,11 @@ import pricingPage from '../fixtures/pricingPage.json';
 import data from '../fixtures/data.json';
 import sidebar from '../fixtures/sidebar.json';
 import navigation from '../fixtures/navigation.json';
+import registrationModule from '../models/registrationModule';
 // isto sto i:
 // import login from '../fixtures/loginModule.json'
 
-describe('Registration suite', () => { 
+describe('Registration suite', () => {
 
 	it('Go to registration page', () => {
 		cy.intercept('/api/v2/health-check').as('loginRedirect');
@@ -40,72 +41,57 @@ describe('Registration suite', () => {
 	});
 
 	it('Attempt registration without email', () => {
-		cy.get(registration.password, { timeout: 10000 }).type(data.user.password);
-		cy.get(registration.numberOfUsers).type(data.numberOfUsers.validNumber);
-		cy.get(registration.submit).click();
+		registrationModule.register({email: ""});
+		
 		// Assert that the error message pertains to an invalid email message
 		cy.get(registration.errorFields).eq(0).should('contain', 'The email field must be a valid email');
 	});
 
 	it('Attempt registration without the @ in email', () => {
-		cy.get(registration.email).clear().type(data.invalidEmail.noAtSymbol);
-		cy.get(registration.password).clear().type(data.user.password);
-		cy.get(registration.numberOfUsers).clear().type(data.numberOfUsers.validNumber);
-		cy.get(registration.submit).click();
+		registrationModule.register({email: data.invalidEmail.noAtSymbol});
+
 		// Assert that the error message pertains to an invalid email message
 		cy.get(registration.errorFields).eq(0).should('contain', 'The email field must be a valid email');
 	});
 
 	it('Attempt registration without domain in the email', () => {
-		cy.get(registration.email).clear().type(data.invalidEmail.noDomain);
-		cy.get(registration.password).clear().type(data.user.password);
-		cy.get(registration.numberOfUsers).clear().type(data.numberOfUsers.validNumber);
-		cy.get(registration.submit).click();
+		registrationModule.register({email: data.invalidEmail.noDomain});
+
 		// Assert that the error message pertains to an invalid email message
 		cy.get(registration.errorFields).eq(0).should('contain', 'The email field must be a valid email');
 	});
 
 	it('Attempt registration without top-level domain in the email', () => {
-		cy.get(registration.email).clear().type(data.invalidEmail.noTopLevel);
-		cy.get(registration.password).clear().type(data.user.password);
-		cy.get(registration.numberOfUsers).clear().type(data.numberOfUsers.validNumber);
-		cy.get(registration.submit).click();
+		registrationModule.register({email: data.invalidEmail.noTopLevel});
+
 		// Assert that the error message pertains to an invalid email message
 		cy.get(registration.errorFields).eq(0).should('contain', 'The email field must be a valid email');
 	});
 
 	it('Attempt registration with an invalid second-level domain name', () => {
-		cy.get(registration.email).clear().type(data.invalidEmail.invalidSecondLevel);
-		cy.get(registration.password).clear().type(data.user.password);
-		cy.get(registration.numberOfUsers).clear().type(data.numberOfUsers.validNumber);
-		cy.get(registration.submit).click();
+		registrationModule.register({email: data.invalidEmail.invalidSecondLevel});
+
 		// Assert that the error message pertains to an invalid email message
 		cy.get(registration.errorFields).eq(0).should('contain', 'The email field must be a valid email');
 	});
 
 	it('Attempt registration without an email username', () => {
-		cy.get(registration.email).clear().type(data.invalidEmail.noUsername);
-		cy.get(registration.password).clear().type(data.user.password);
-		cy.get(registration.numberOfUsers).clear().type(data.numberOfUsers.validNumber);
-		cy.get(registration.submit).click();
+		registrationModule.register({email: data.invalidEmail.noUsername});
+
 		// Assert that the error message pertains to an invalid email message
 		cy.get(registration.errorFields).eq(0).should('contain', 'The email field must be a valid email');
 	});
 
 	it('Attempt registration with special characters in email username', () => {
-		cy.get(registration.email).clear().type(data.invalidEmail.specialChar);
-		cy.get(registration.password).clear().type(data.user.password);
-		cy.get(registration.numberOfUsers).clear().type(data.numberOfUsers.validNumber);
-		cy.get(registration.submit).click();
+		registrationModule.register({email: data.invalidEmail.specialChar});
+
 		// Assert that the error message pertains to an invalid email message
 		cy.get(registration.errorFields).eq(0).should('contain', 'The email field must be a valid email');
 	});
 
 	it('Attempt registration without a password', () => {
-		cy.get(registration.email).clear().type(data.user.email);
-		cy.get(registration.password).clear();
-		cy.get(registration.numberOfUsers).clear().type(data.numberOfUsers.validNumber);
-		cy.get(registration.submit).click();
+		registrationModule.register({password: ""});
+
 		// Assert that the error message pertains to the lack of pasword
 		cy.get(registration.errorFields).eq(1).should('contain', 'The password field is required');
 	});
@@ -118,65 +104,35 @@ describe('Registration suite', () => {
 	// });
 
 	it('Attempt registration with too short a password', () => {
-		cy.get(registration.email).clear().type(data.user.email);
-		cy.get(registration.password).clear().type(data.invalidPassword.tooShort);
-		cy.get(registration.numberOfUsers).clear().type(data.numberOfUsers.validNumber);
-		cy.get(registration.submit).click();
+		registrationModule.register({password: data.invalidPassword.tooShort});
+
 		// Assert that the error message pertains to password length
 		cy.get(registration.errorFields).eq(1).should('contain', 'The password field must be at least 5 characters');
 	});
 
 	it('Attempt registration without a number of users', () => {
-		cy.get(registration.email).clear().type(data.user.email);
-		cy.get(registration.password).clear().type(data.user.password);
-		cy.get(registration.numberOfUsers).clear();
-		cy.get(registration.submit).click();
+		registrationModule.register({numberOfUsers: ""});
+		
 		// Assert that the error message pertains to the required "number of users" value
 		cy.get(registration.errorFields).eq(2).should('contain', 'The number of users field is required');
 	});
 
 	it('Attempt registration with no users', () => {
-		cy.get(registration.email).clear().type(data.user.email);
-		cy.get(registration.password).clear().type(data.user.password);
-		cy.get(registration.numberOfUsers).clear().type(data.numberOfUsers.tooFew);
-		cy.get(registration.submit).click();
+		registrationModule.register({numberOfUsers: data.numberOfUsers.tooFew});
+
 		// Assert that the error message pertains to the inadequate number of users
 		cy.get(registration.errorFields).eq(2).should('contain', 'The number of users must be between 1 and 10');
 	});
 
 	it('Attempt registration with more users than allowed', () => {
-		cy.get(registration.email).clear().type(data.user.email);
-		cy.get(registration.password).clear().type(data.user.password);
-		cy.get(registration.numberOfUsers).clear().type(data.numberOfUsers.tooMany);
-		cy.get(registration.submit).click();
+		registrationModule.register({numberOfUsers: data.numberOfUsers.tooMany});
+
 		// Assert that the error message pertains to the inadequate number of users
 		cy.get(registration.errorFields).eq(2).should('contain', 'The number of users must be between 1 and 10');
 	});
 
 	it('Register successfully', () => {
-		cy.intercept('POST', '/api/v2/register').as('register');
-		cy.intercept('GET', '/api/v2/my-organizations').as('myOrganizations');
-		cy.get(registration.email).clear().type(data.user.email);
-		cy.get(registration.password).clear().type(data.user.password);
-		cy.get(registration.numberOfUsers).clear().type(data.numberOfUsers.validNumber);
-		cy.get(registration.submit).click();
-
-		// Assert that registration POST request was successful
-		cy.wait('@register')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		})
-
-		// Assert that "My organizations" have been requested
-		cy.wait('@myOrganizations')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		})
-
-		// Make sure that the browser has loaded the correct URL
-		cy.url().should('eq', 'https://cypress.vivifyscrum-stage.com/my-organizations');
+		registrationModule.register({});	
 	});
 
 	it('Add account details and log out', () => {
