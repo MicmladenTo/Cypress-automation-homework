@@ -54,7 +54,7 @@ module.exports = {
 		.then((res) => {
 		expect(res.statusCode).to.eq(201);
 		expect(res.body.name).to.eq(boardTitle);
-		cy.url().should('eq', Cypress.config().baseUrl + 'boards/' + res.body.id);
+		cy.url().should('eq', `${Cypress.config().baseUrl}boards/${res.body.id}`);
 		})
 	}
 }

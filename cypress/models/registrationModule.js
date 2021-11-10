@@ -59,13 +59,13 @@ module.exports = {
 		this.numberOfUsers.clear();
 
 		if (email !== "") {
-		this.emailField.should("be.visible").type(email);
+		this.emailField.type(email);
 		}
 		if (password !== "") {
-		this.passwordField.should("be.visible").type(password);
+		this.passwordField.type(password);
 		}
 		if (numberOfUsers !== "") {
-		this.numberOfUsers.should("be.visible").type(numberOfUsers);
+		this.numberOfUsers.type(numberOfUsers);
 		}
 		this.submitButton.click();
 

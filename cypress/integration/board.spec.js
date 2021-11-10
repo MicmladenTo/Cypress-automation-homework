@@ -60,7 +60,7 @@ describe('Organisation CRUD suite', () => {
 		expect(res.statusCode).to.eq(200);
 		expect(res.body.status).to.eq("archived");
 		expect(res.body.name).to.eq(data.boardTitle);
-		cy.url().should('eq', Cypress.config().baseUrl + 'organizations/' + res.body.organization_id + '/boards');
+		cy.url().should('eq', `${Cypress.config().baseUrl}organizations/${res.body.organization_id}/boards`);
 		})
 	});
 
@@ -98,7 +98,7 @@ describe('Organisation CRUD suite', () => {
 		cy.intercept('POST', '/api/v2/organizations/*').as('deleteABoard');
 
 		sidebarModule.orgMenuConfiguration.click();
-		organisationModule.deleteOrgButton.click();
+		organisationModule.configDeleteOrgButton.click();
 		
 		// Assert that the right password has been entered
 		organisationModule.modalPasswordInput
