@@ -14,7 +14,7 @@ describe('Organisation CRUD suite', () => {
 	it('Go to the app and log in', () => {
 		cy.visit('/', {timeout: 30000});
 
-		authModule.login({});
+		cy.login({});
 
 		// Assert that the browser has visited the correct URL
 		cy.url().should('eq', 'https://cypress.vivifyscrum-stage.com/my-organizations');
@@ -26,7 +26,7 @@ describe('Organisation CRUD suite', () => {
 	});
 
 	it('Create a Scrum board from the panel', () => {
-		boardModule.configureAndAssertABoard({})
+		cy.configureAndAssertABoard({})
 	});
 
 	it('Go back and archive the board - close modal', () => {
@@ -87,11 +87,7 @@ describe('Organisation CRUD suite', () => {
 		boardModule.modalYesButton.click();
 
 		// Assert that the board has actually been deleted
-		cy.wait('@deleteABoard')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		});
+		cy.assertStatusCode('@deleteABoard', 200);
 	})
 
 	it('Delete organisation from config screen - positive', () => {
@@ -108,14 +104,9 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.modalYesButton.click();
 
 		// Assert that the organisation has been successfully deleted
-		cy.wait('@deleteABoard')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(201);
-
+		cy.assertStatusCode('@deleteABoard', 201);
 		
 		// Make sure that we have been redirected to the "My organizations" page
 		cy.url().should('eq', 'https://cypress.vivifyscrum-stage.com/my-organizations');
 	});
 	});
-})

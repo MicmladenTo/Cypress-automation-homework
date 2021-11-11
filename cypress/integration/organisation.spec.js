@@ -17,16 +17,12 @@ describe('Organisation CRUD suite', () => {
 		cy.visit('/', {timeout: 30000});
 
 		// Make sure we have been properly redirected at the beginning of the suite
-		cy.wait('@loginRedirect')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		})
+		cy.assertStatusCode('@loginRedirect', 200);
 
 		// Make sure we are at the correct URL for logging in
 		cy.url().should('eq', 'https://cypress.vivifyscrum-stage.com/login')
 
-		authModule.login({});
+		cy.login({});
 
 		// // Make sure that the browser has loaded the correct URL
 		cy.url().should('eq', 'https://cypress.vivifyscrum-stage.com/my-organizations');
@@ -35,7 +31,7 @@ describe('Organisation CRUD suite', () => {
 	it('Create an organisation from the dashboard', () => {
 		organisationModule.addNewOrganisation.click();
 
-		organisationModule.configureAndAssertNewOrg({});
+		cy.configureAndAssertNewOrg({});
 
 		// Go back to My Organizations
 		navigationModule.homeButton.click();
@@ -55,7 +51,7 @@ describe('Organisation CRUD suite', () => {
 		sidebarModule.topAddNew.click();
 		sidebarModule.topAddOrganisation.click();
 
-		organisationModule.configureAndAssertNewOrg({organisationName: data.accountDetails.organisationName2});
+		cy.configureAndAssertNewOrg({organisationName: data.accountDetails.organisationName2});
 
 		// Go back to My Organizations
 		navigationModule.homeButton.click();
@@ -77,7 +73,7 @@ describe('Organisation CRUD suite', () => {
 		sidebarModule.topAddNew.click();
 		sidebarModule.topAddOrganisation.click();
 
-		organisationModule.configureAndAssertNewOrg({organisationName: data.accountDetails.organisationName3});
+		cy.configureAndAssertNewOrg({organisationName: data.accountDetails.organisationName3});
 
 		// Go back to My Organizations
 		navigationModule.homeButton.click();
@@ -95,19 +91,17 @@ describe('Organisation CRUD suite', () => {
 	it('Edit organisation name - name too long', () => {
 		navigationModule.homeButton.click();
 
-		organisationModule.editOrgName({organisationName: data.accountDetails.tooLongOrgName})
+		cy.editOrgName({organisationName: data.accountDetails.tooLongOrgName})
 
 		// Assert the "unprocessable entity" status code and the error message
-		cy.wait('@rename')
-		.its('response')
-		.then((res) => {
+		cy.wait('@rename').its('response').then((res) => {
 		expect(res.statusCode).to.eq(422);
 		expect(res.body.name[0]).to.eq("The name may not be greater than 255 characters.");
 		})
 	});
 
 	it('Edit organisation name - empty string', () => {
-		organisationModule.editOrgName({organisationName: ""})
+		cy.editOrgName({organisationName: ""})
 
 		// Verify that the name has not been changed on the frontend
 		organisationModule.organisationNameHeader.eq(0)
@@ -115,7 +109,7 @@ describe('Organisation CRUD suite', () => {
 	});
 
 	it('Edit organisation name - spaces', () => {
-		organisationModule.editOrgName({organisationName: data.accountDetails.orgNameOnlySpaces})
+		cy.editOrgName({organisationName: data.accountDetails.orgNameOnlySpaces})
 
 		// Verify that the name has not been changed on the frontend
 		organisationModule.organisationNameHeader.eq(0)
@@ -123,15 +117,10 @@ describe('Organisation CRUD suite', () => {
 	});
 
 	it('Edit organisation name - unicode', () => {
-		organisationModule.editOrgName({organisationName: data.accountDetails.unicodeName})
+		cy.editOrgName({organisationName: data.accountDetails.unicodeName})
 
 		// Assert that the name has been changed into a unicode one
-		cy.wait('@rename')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		expect(res.body.name).to.eq(data.accountDetails.unicodeName);
-		})
+		cy.assertStatusCodeAndBody('@rename', 200, data.accountDetails.unicodeName);
 
 		// Verify that the name has been changed to a unicode one on the frontend
 		organisationModule.organisationNameHeader.eq(0)
@@ -139,15 +128,10 @@ describe('Organisation CRUD suite', () => {
 	});
 
 	it('Edit organisation name from the dashboard', () => {
-		organisationModule.editOrgName({organisationName: data.accountDetails.editedOrgName})
+		cy.editOrgName({organisationName: data.accountDetails.editedOrgName})
 
 		// Assert that the name has been changed into a unicode one
-		cy.wait('@rename')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		expect(res.body.name).to.eq(data.accountDetails.editedOrgName);
-		})
+		cy.assertStatusCodeAndBody('@rename', 200, data.accountDetails.editedOrgName);
 
 		// Verify that the name has been changed to a unicode one on the frontend
 		organisationModule.organisationNameHeader.eq(0)
@@ -162,11 +146,7 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.confirmBoardsModal.click();
 
 		// Assert a successful post request and verify organisation name from the response
-		cy.wait('@viewOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		cy.url().should('contain','/boards');
+		cy.assertStatusCodeAndBody('@viewOrganization', 200);
 
 		// Parse the URL for organisation ID
 		// cy.url().then(url => {
@@ -189,20 +169,12 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.configUpdateOrgName.eq(0).click();
 		
 		// Assert a successful PUT request and verify organisation name from the response
-		cy.wait('@editOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		expect(res.body.name).to.eq(data.accountDetails.companyName);
-		cy.url().should('eq', Cypress.config().baseUrl + 'organizations/' + res.body.id + '/settings');
-		});
+		cy.assertStatusCodeAndBody('@editOrganization', 200, data.accountDetails.companyName);
 
 		//Assert the popup notification
 		organisationModule.notificationModal
-		.should('be.visible')
-		.and('contain', 'Successfully updated the Organization name.')
-	})
-	})
+		.should('contain', 'Successfully updated the Organization name.');
+	});
 
 	it('Delete organisation from config screen - close modal', () => {
 		organisationModule.configDeleteOrgButton.click();
@@ -231,12 +203,8 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.modalYesButton.click();
 
 		//Assert the "Unauthorised" status code and the "Wrong password" error
-		cy.wait('@editOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(403);
-		expect(res.body.errors[0]).to.eq("You entered the wrong password!");
-		});
+		cy.assertStatusCodeAndError('@editOrganization', 403, "You entered the wrong password!");
+
 		organisationModule.closeConfirmationModal.click();
 	});
 
@@ -248,11 +216,7 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.modalYesButton.click();
 		
 		// Wait for confirmation of successful deletion through status code
-		cy.wait('@deleteOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(201);
-		});
+		cy.assertStatusCode('@deleteOrganization', 201);
 
 		// Assert return to the home screen
 		navigationModule.myOrganisations.should('be.visible');
@@ -281,11 +245,7 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.modalYesButton.click();
 
 		// Wait for confirmation of successful archiving through status code
-		cy.wait('@archiveOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		});
+		cy.assertStatusCode('@archiveOrganization', 200);
 
 		organisationModule.deleteArchivedOrg.eq(0).click({force: true});
 		organisationModule.closeConfirmationModal.click();
@@ -301,11 +261,7 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.modalYesButton.click();
 
 		// Wait for confirmation of successful archiving through status code
-		cy.wait('@archiveOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		});
+		cy.assertStatusCode('@archiveOrganization', 200);
 
 		organisationModule.deleteArchivedOrg.eq(0).click({force: true});
 		organisationModule.modalNoButton.click();
@@ -322,11 +278,7 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.modalYesButton.click();
 
 		// Wait for confirmation of successful archiving through status code
-		cy.wait('@archiveOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		});
+		cy.assertStatusCode('@archiveOrganization', 200);
 
 		organisationModule.deleteArchivedOrg.eq(0).click({force: true});
 		
@@ -337,12 +289,7 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.modalYesButton.click();
 
 		// Assert that the deletion has not gone through and the "Wrong message" password
-		cy.wait('@deleteOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(403);
-		expect(res.body.errors[0]).to.eq("You entered the wrong password!");
-		});
+		cy.assertStatusCodeAndError('@deleteOrganization', 403, "You entered the wrong password!");
 
 		organisationModule.closeConfirmationModal.click();
 	});
@@ -355,11 +302,7 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.modalYesButton.click();
 
 		// Wait for confirmation of successful archiving through status code
-		cy.wait('@archiveOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(200);
-		});
+		cy.assertStatusCode('@archiveOrganization', 200);
 
 		organisationModule.deleteArchivedOrg.eq(0).click({force: true});
 
@@ -371,11 +314,7 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.modalYesButton.click();
 
 		// Assert that the deletion has been successful
-		cy.wait('@deleteOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(201);
-		});
+		cy.assertStatusCode('@deleteOrganization', 201);
 	});
 
 	it('Delete the archived organisation through the panel - close the modal', () => {
@@ -409,12 +348,7 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.modalYesButton.click();
 
 		// Assert that the deletion has not gone through and the "Wrong message" password
-		cy.wait('@deleteOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(403);
-		expect(res.body.errors[0]).to.eq("You entered the wrong password!");
-		});
+		cy.assertStatusCodeAndError('@deleteOrganization', 403, "You entered the wrong password!");
 
 		organisationModule.closeConfirmationModal.click();
 
@@ -430,15 +364,11 @@ describe('Organisation CRUD suite', () => {
 		organisationModule.modalYesButton.click();
 
 		// Assert that the organisation has been successfully deleted
-		cy.wait('@deleteOrganization')
-		.its('response')
-		.then((res) => {
-		expect(res.statusCode).to.eq(201);
-		});
+		cy.assertStatusCode('@deleteOrganization', 201);
 
 		// Make sure that we have been redirected to the "My organizations" page
 		cy.url().should('eq', 'https://cypress.vivifyscrum-stage.com/my-organizations');
 
 		cy.wait(5000);
 	});
-	})
+})
