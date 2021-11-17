@@ -19,7 +19,10 @@
     "url": "https://github.com/MicmladenTo/Cypress-automation-homework/issues"
   },
   "homepage": "https://github.com/MicmladenTo/Cypress-automation-homework#readme",
+  "devDependencies": {
+    "cypress": "^8.7.0"
+  },
   "dependencies": {
-    "cypress": "^8.5.0"
+    "faker": "^5.5.3"
   }
 }
