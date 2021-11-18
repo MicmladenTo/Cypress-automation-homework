@@ -16,7 +16,18 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
+
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
+
+  // if version not defined, use qa
+  const version = config.env.version || 'qa'
+
+  // load env from json
+  config.env = require(`../config/${version}.json`);
+
+  // change baseUrl
+  config.baseUrl = config.env.baseUrl
+
+  return config
+
 }
