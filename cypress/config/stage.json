@@ -1,0 +1,6 @@
+{
+	"baseUrl": "https://app.vivifyscrum.com/login",
+	"env": {
+		"environment": "stage"
+	  }
+}

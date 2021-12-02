@@ -4,7 +4,11 @@
   "description": "Cypress project homework",
   "main": "index.js",
   "scripts": {
-    "cypress:open": "./node_modules/.bin/cypress open"
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run",
+    "cy:open:stage": "npx cypress open --env version=stage",
+    "cy:run:stage": "npx cypress open --env version=stage",
+    "test:reporting": "node scripts/test.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +24,13 @@
   },
   "homepage": "https://github.com/MicmladenTo/Cypress-automation-homework#readme",
   "devDependencies": {
-    "cypress": "^8.7.0"
+    "axios": "^0.24.0",
+    "cypress": "^8.7.0",
+    "cypress-file-upload": "^5.0.8",
+    "fs-extra": "^10.0.0",
+    "mochawesome": "^7.0.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^6.0.1"
   },
   "dependencies": {
     "faker": "^5.5.3"
