@@ -35,5 +35,4 @@ describe('API testing', () => {
 			statusCode: 401
 		})
 	})
-		
-	})
+})

@@ -1,6 +1,5 @@
 import userApi from "../api/user"
 import organisationApi from "../api/organisation"
-import { all } from "bluebird";
 
 describe('API testing', () => {
 	let userToken;	
@@ -19,20 +18,8 @@ describe('API testing', () => {
 					orgId: organisation.id
 				})
 			})
+		})
 	})
-})
-
-
-	// it('first it', () => {
-	// 	// Da nam funkcija ne bi vratila samo promise, sačekaćemo je sa "then"
-	// 	let token = userApi.login({}).then((token) => {
-	// 		console.log(token);
-	// 	})
-	// })
-	// it('wrong email', () => {
-	// 	userApi.login({email: "pera@gmail.com", password: "sifra", statusCode: 200})
-	// 	console.log(userToken);
-	// 	})
 
 	let organisationId;
 	let organisationName;
@@ -43,9 +30,9 @@ describe('API testing', () => {
 		}).then((organisationObject) => {
 			organisationId = organisationObject.id;
 			organisationName = organisationObject.name;
-			console.log(organisationName)
 		})
 	});
+
 	it('02b - Edit organization', () => {
 		organisationApi.put({
 			token: userToken,
@@ -53,22 +40,22 @@ describe('API testing', () => {
 			testMessage: "02b - Edit organization"
 		}).then((organisationObject) => {
 			organisationName = organisationObject.name;
-			console.log(organisationName)
 		})
 	});
+
 	it('03 - Delete organization', () => {
 		organisationApi.delete({
 			token:userToken,
 			orgId:organisationId
 		});
 	});
+
 	let allOrganisations;
 	it('04 - Get all organizations', () => {
 		organisationApi.get({
 			token:userToken,
 		 }).then((allOrgs) => {
 			 allOrganisations = allOrgs;
-		 	console.log(allOrgs);
 		})
 	})
 })

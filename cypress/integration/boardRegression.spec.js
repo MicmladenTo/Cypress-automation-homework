@@ -9,21 +9,20 @@ describe('API testing', () => {
 			userToken = token;
 		});
 	})
+
 	after(() => {
 		boardApi.get({
 			token: userToken,
 			orgId: organisationId
 		}).then((boards) => {
-			console.log(boards);
 			boards.forEach((board) => {
-				console.log(board);
 				boardApi.delete({
 					token: userToken,
 					boardId: board.id
 				})
 			})
+		})
 	})
-})
 
 	let organisationId;
 	it('02 - Create organization', () => {
@@ -42,7 +41,6 @@ describe('API testing', () => {
 			token: userToken,
 			testMessage: "03 - Create a board",
 			organisationId: organisationId,
-			orgType: "scrum_board",
 		}).then((boardObject) => {
 			boardId = boardObject.id;
 			boardCode = boardObject.code;
@@ -54,7 +52,6 @@ describe('API testing', () => {
 			token: userToken,
 			testMessage: "03a - Create a second board",
 			organisationId: organisationId,
-			orgType: "scrum_board",
 		})
 	});
 
@@ -64,12 +61,16 @@ describe('API testing', () => {
 			boardCode: boardCode,
 			token: userToken,
 			testMessage: "04 - Edit a board",
+		}).then((boardObject) => {
+			boardId = boardObject.id;
+			boardCode = boardObject.code;
 		})
 	});
 
 	it('05 - Delete a board', () => {
 		boardApi.put({
 			boardId: boardId,
+			boardCode: boardCode,
 			token: userToken,
 			testMessage: "05 - Delete a board",
 		})
@@ -80,10 +81,6 @@ describe('API testing', () => {
 			token: userToken,
 			orgId: organisationId,
 			testMessage: "06 - Get all boards",
-		}).then((boards) => {
-			boards.forEach(board => {
-				console.log(board.name)
-			});
 		})
 	});
 })

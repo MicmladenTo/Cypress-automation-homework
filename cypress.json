@@ -1,2 +1,13 @@
 {
+	"taskUnit": "points",
+	"loginApi": "https://cypress-api.vivifyscrum-stage.com/api/v2/login",
+	"boardsApi": "https://cypress-api.vivifyscrum-stage.com/api/v2/boards",
+	"organisationsApi": "https://cypress-api.vivifyscrum-stage.com/api/v2/organizations",
+	"scrumBoard": "scrum_board",
+	"orgs": "https://cypress-api.vivifyscrum-stage.com/api/v2/organizations",
+	"orgsData": "https://cypress-api.vivifyscrum-stage.com/api/v2/organizations-data",
+	"user": {
+		"username": "mlart8441@yahoo.com",
+		"password": "Vivify8"
+	}
 }

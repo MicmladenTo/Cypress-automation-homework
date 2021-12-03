@@ -1,5 +1,6 @@
 import faker from "faker";
 import colour from "../support/consoleColour";
+import locations from '../../cypress.json';
 
 module.exports = {
 	get({
@@ -8,7 +9,7 @@ module.exports = {
 	}) {
 		return cy.request({
 			method: "GET",
-			url: `https://cypress-api.vivifyscrum-stage.com/api/v2/organizations/${orgId}/boards-data`,
+			url: `${locations.organisationsApi}/${orgId}/boards-data`,
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -22,15 +23,15 @@ module.exports = {
 		token = "",
 		statusCode = 201,
 		organisationId = "",
-		orgType = "",
+		orgType = locations.scrumBoard,
 		testMessage = "",
 		configuration_board_id = null,
 		team_members_board_id = null
 	}) {
 		return cy.request({
-			// failOnStatusCode: false,
+			failOnStatusCode: false,
 			method: "POST",
-			url: "https://cypress-api.vivifyscrum-stage.com/api/v2/boards",
+			url: locations.boardsApi,
 			body: {
 				name: boardName,
 				organization_id: organisationId,
@@ -57,13 +58,13 @@ module.exports = {
 		token = "",
 		statusCode = 200,
 		description = null,
-		taskUnit = "points",
+		taskUnit = locations.taskUnit,
 		testMessage = ""
 	}) {
 		return cy.request({
 			failOnStatusCode: false,
             method: "PUT",
-            url: `https://cypress-api.vivifyscrum-stage.com/api/v2/boards/${boardId}`,
+            url: `${locations.boardsApi}/${boardId}`,
             body: {
               name: boardName,
 			  code: boardCode,
@@ -84,6 +85,7 @@ module.exports = {
 	},
 	delete({
 		boardId = "",
+		boardCode = "",
 		token = "",
 		statusCode = 200,
 		testMessage = ""
@@ -91,7 +93,7 @@ module.exports = {
 		return cy.request({
 			failOnStatusCode: false,
             method: "DELETE",
-            url: `https://cypress-api.vivifyscrum-stage.com/api/v2/boards/${boardId}`,
+            url: `${locations.boardsApi}/${boardId}`,
             body: {
             },
             headers: {

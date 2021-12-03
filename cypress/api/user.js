@@ -1,16 +1,17 @@
 import colour from "../support/consoleColour";
+import locations from '../../cypress.json'
 
 module.exports = {
 	login({
-		email = "mlart8441@yahoo.com",
-		password = "Vivify8",
+		email = locations.user.username,
+		password = locations.user.password,
 		statusCode = 200,
 		testMessage = ""
 	}) {
 		return cy.request({
 			failOnStatusCode: false,
 			method : "POST",
-			url : "https://cypress-api.vivifyscrum-stage.com/api/v2/login",
+			url : locations.loginApi,
 			body : {
 				email: email,
 				password: password
@@ -21,7 +22,6 @@ module.exports = {
             : colour.log(`${testMessage} - Fail - ${JSON.stringify(response)}`, "error");
 
 			expect(response.status).to.eql(statusCode);
-			// console.log(response)
 			return response.body.token
 		});
 	}
