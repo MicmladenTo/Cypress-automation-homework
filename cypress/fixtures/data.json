@@ -4,6 +4,21 @@
 		"password" : "Vivify8"
 	},
 
+	"accounts": {
+		"andrija": {
+			"email": "andrija989@gmail.com",
+			"password": "Cuca5555"
+		},
+		"sara": {
+			"email": "sarastanacev97+1@gmail.com",
+			"password": "Test1234"
+		},
+		"mladen": {
+			"email" : "mlart8441@yahoo.com",
+			"password" : "Vivify8"
+		}
+	},
+
 	"invalidEmail" : {
 		"noAtSymbol" : "mladen.tomicvivifyideas.com",
 		"noDomain" : "mladen.tomic",
